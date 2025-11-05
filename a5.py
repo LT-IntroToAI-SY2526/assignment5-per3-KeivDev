@@ -38,6 +38,11 @@ class Board:
             this innermost element won't be a list of possibilities anymore but the
             single number that is the assignment.
     """
+    num_nums_placed: int
+    size = 9
+    rows: List[List[Any]]
+    
+
 
     def __init__(self):
         """Constructor for a board, sets up a board with each element having all
@@ -106,7 +111,9 @@ class Board:
         Returns:
             a tuple of row, column index identifying the most constrained cell
         """
-        pass
+        for i in range(0,9):
+            for j in range(0,9):
+                
 
     def failure_test(self) -> bool:
         """Check if we've failed to correctly fill out the puzzle. If we find a cell
