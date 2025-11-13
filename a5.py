@@ -188,22 +188,24 @@ def DFS(state: Board) -> Board:
     Returns:
         either None in the case of invalid input or a solved board
     """
-    the_stack = Stack([state])
-    #the_stack.push(state)
+    the_stack = Stack()
+    the_stack.push(state)
 
     while not the_stack.is_empty():
         current_board: Board = the_stack.pop()
-        if current_board.goal_test()
+        if current_board.goal_test():
             return current_board
         if not current_board.failure_test():
             row, col = current_board.find_most_constrained_cell()
-            print(row, col)
+            #print(row, col)
             possible_values = current_board.rows[row][col]
-            print(possible_values)
+            #print(possible_values)
             for val in possible_values:
                 new_board: Board = copy.deepcopy(current_board)
                 new_board.update(row, col, val)
-                
+                the_stack.push(new_board)
+    return None
+    
 
 
 
@@ -219,8 +221,21 @@ def BFS(state: Board) -> Board:
     Returns:
         either None in the case of invalid input or a solved board
     """
-    pass
+    the_queue = Queue()
+    the_queue.push(state)
 
+    while not the_queue.is_empty():
+        current_board: Board = the_queue.pop()
+        if current_board.goal_test():
+            return current_board
+        if not current_board.failure_test():
+            row, col = current_board.find_most_constrained_cell()
+            possible_values = current_board.rows[row][col]
+            for val in possible_values:
+                new_board: Board = copy.deepcopy(current_board)
+                new_board.update(row, col, val)
+                the_queue.push(new_board)
+    return None
 
 if __name__ == "__main__":
     # uncomment the below lines once you've implemented the board class
