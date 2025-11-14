@@ -1,4 +1,6 @@
 import copy  # to make a deepcopy of the board
+import time
+
 from typing import List, Any, Tuple
 
 # import Stack and Queue classes for BFS/DFS
@@ -191,9 +193,17 @@ def DFS(state: Board) -> Board:
     the_stack = Stack()
     the_stack.push(state)
 
+    iterations = 0
+    start_time = time.time()
+
+
     while not the_stack.is_empty():
+        iterations += 1
         current_board: Board = the_stack.pop()
         if current_board.goal_test():
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"DFS took {iterations} iterations in {elapsed_time:.4f} seconds")
             return current_board
         if not current_board.failure_test():
             row, col = current_board.find_most_constrained_cell()
@@ -223,10 +233,17 @@ def BFS(state: Board) -> Board:
     """
     the_queue = Queue()
     the_queue.push(state)
+    iterations = 0
+    start_time = time.time()
 
     while not the_queue.is_empty():
+        iterations += 1
+
         current_board: Board = the_queue.pop()
         if current_board.goal_test():
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"BFS took {iterations} iterations in {elapsed_time:.4f} seconds")
             return current_board
         if not current_board.failure_test():
             row, col = current_board.find_most_constrained_cell()
