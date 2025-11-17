@@ -23,10 +23,12 @@ After completing the assignment, answer the following reflection questions:
 
 1. What are some things that you learned through this assignment? Think about the concepts of backtracking, constraint satisfaction, and search algorithms. Were there any particular challenges you faced while implementing the Board class methods or the DFS/BFS functions? How did you overcome them?
 
-
+I learned about how similar DFS and BFS are. That one uses a "stack" and one uses a "queue" is such an intuitive way of thinking about it. I found that very elegant.
 
 2. How can you apply what you learned in this assignment to future programs or projects? Consider other types of problems that involve searching through possibilities, making decisions, and backtracking when those decisions don't work out. Can you think of real-world scenarios where DFS or BFS might be useful? What about other constraint satisfaction problems?
 
-
+If I wanted to generate a map or level given some constraints, I could use DFS to search through all possible levels/maps until I found one that followed the constraints.
 
 3. Explain how the Stack and Queue classes work and why they are important for DFS and BFS algorithms. Describe the difference between LIFO (Last In First Out) and FIFO (First In First Out) data structures. How does using a Stack versus a Queue change the way the search algorithm explores possible solutions? Why is one data structure better suited for depth-first search and the other for breadth-first search?
+
+A LIFO data structure is such that when you pop it, it returns the most recently added item, while a FIFO data structure is such that when you pop it it returns the earliest added item (that wasn't popped already). Using a Stack results in a depth-first search, while using a queue results in a breadth-first search. This is because in a Stack, the same path can be popped in and out of the top of the stack over and over again as it is explored further and new branches are discovered, while in a Queue, after pushing in an item, you have to go through all of the other items before seeing it again.
